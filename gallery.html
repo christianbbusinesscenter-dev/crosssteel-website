@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gallery | CrossSteel Welding | Houston, TX</title>
+    <meta name="description"
+        content="Browse CrossSteel Welding's project gallery — mobile welding, custom fabrication, gates, trailers, agricultural and structural steel work across Greater Houston.">
+    <link rel="canonical" href="https://crosssteelwelding.com/gallery.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Sticky Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">CROSS<span class="accent">STEEL</span></a>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="index.html#process">How It Works</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html" class="nav-active">Gallery</a></li>
+                    <li><a href="index.html#reviews">Reviews</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:3462367549" class="header-phone hidden-mobile"><i class="fa-solid fa-phone"></i> (346)
+                    236-7549</a>
+                <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay">
+        <div class="mobile-menu-content">
+            <button class="mobile-menu-close">&times;</button>
+            <a href="services.html" class="mobile-link">Services</a>
+            <a href="index.html#process" class="mobile-link">How It Works</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <a href="gallery.html" class="mobile-link">Gallery</a>
+            <a href="index.html#reviews" class="mobile-link">Reviews</a>
+            <a href="index.html#faq" class="mobile-link">FAQ</a>
+            <a href="contact.html" class="btn btn-primary mobile-cta">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- Inner Page Hero -->
+    <section class="inner-hero">
+        <div class="inner-hero-overlay"></div>
+        <div class="container inner-hero-content">
+            <p class="inner-hero-eyebrow"><a href="index.html">Home</a> <i class="fa-solid fa-chevron-right"></i>
+                Gallery</p>
+            <h1>Built by Hand.<br><em class="hero-accent">Built to Last.</em></h1>
+            <p class="inner-hero-sub">A look at our recent welding and fabrication work across Greater Houston.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery-section">
+        <div class="container">
+
+            <!-- Filter Bar -->
+            <div class="gallery-filter-bar">
+                <button class="filter-btn filter-active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="mobile">Mobile Welding</button>
+                <button class="filter-btn" data-filter="fabrication">Custom Fab</button>
+                <button class="filter-btn" data-filter="gates">Gates & Fencing</button>
+                <button class="filter-btn" data-filter="trailers">Trailers</button>
+                <button class="filter-btn" data-filter="agricultural">Agricultural</button>
+                <button class="filter-btn" data-filter="structural">Structural</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="galleryGrid">
+
+                <div class="gallery-item bento-fire reveal-item" data-category="mobile">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Mobile Welding</span>
+                        <h3>On-Site Structural Repair</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Conroe, TX</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-gate reveal-item" data-category="gates">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Gates & Fencing</span>
+                        <h3>Ranch Entrance Gate</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Magnolia, TX — 16ft custom iron gate</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-trailer reveal-item" data-category="trailers">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Trailer Repair</span>
+                        <h3>Trailer Frame Rebuild</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> The Woodlands, TX</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-fence reveal-item" data-category="gates">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Security Fencing</span>
+                        <h3>Commercial Security Fence</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> The Woodlands — 200ft perimeter</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-struct reveal-item" data-category="structural">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Structural</span>
+                        <h3>Steel Column Install</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Katy, TX — Commercial build</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-ranch reveal-item" data-category="agricultural">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Agricultural</span>
+                        <h3>Livestock Pen System</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Magnolia, TX — 6-stall pipe pen</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-fire reveal-item gallery-item--tall" data-category="fabrication">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Custom Fab</span>
+                        <h3>Industrial Steel Railing</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Houston, TX — Warehouse stair railing</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-gate reveal-item" data-category="fabrication">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Custom Fab</span>
+                        <h3>Custom Steel Brackets</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Spring, TX — Heavy-duty mounting brackets</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-trailer reveal-item" data-category="mobile">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Mobile Welding</span>
+                        <h3>Equipment Repair On-Site</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Cypress, TX — Farm equipment weld</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-fence reveal-item" data-category="agricultural">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Agricultural</span>
+                        <h3>Cattle Chute Fabrication</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Tomball, TX — Custom chute & squeeze setup</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-struct reveal-item" data-category="structural">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Structural</span>
+                        <h3>Beam Reinforcement</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Humble, TX — Industrial facility repair</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item bento-ranch reveal-item" data-category="trailers">
+                    <div class="gallery-overlay">
+                        <span class="gallery-tag">Trailer Fab</span>
+                        <h3>Custom Gooseneck Build</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Conroe, TX — 24ft flatbed custom build</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="gallery-no-results" id="galleryNoResults" style="display:none;">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p>No projects found in this category.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Strip -->
+    <section class="page-cta-strip">
+        <div class="container page-cta-inner">
+            <div>
+                <h2>Ready to start your project?</h2>
+                <p>Every job gets the same care — clean welds, quality materials, built to last.</p>
+            </div>
+            <div class="page-cta-actions">
+                <a href="contact.html" class="btn btn-primary btn-lg">Get a Free Quote</a>
+                <a href="tel:3462367549" class="btn btn-secondary btn-lg"><i class="fa-solid fa-phone"></i> (346)
+                    236-7549</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container footer-top-inner">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo footer-logo">CROSS<span class="accent">STEEL</span></a>
+                    <p class="footer-tagline">Quality Welding. Mobile Service.<br>Built to Last.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Google"><i class="fa-brands fa-google"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Mobile Welding</a></li>
+                        <li><a href="services.html">Custom Fabrication</a></li>
+                        <li><a href="services.html">Gates & Fencing</a></li>
+                        <li><a href="services.html">Trailer Repair</a></li>
+                        <li><a href="services.html">Ranch & Agricultural</a></li>
+                        <li><a href="services.html">Emergency Welding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Project Gallery</a></li>
+                        <li><a href="index.html#reviews">Reviews</a></li>
+                        <li><a href="contact.html">Get a Quote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact & Hours</h4>
+                    <ul class="footer-contact-list">
+                        <li><i class="fa-solid fa-phone"></i><a href="tel:3462367549">(346) 236-7549</a></li>
+                        <li><i class="fa-solid fa-envelope"></i><a
+                                href="mailto:info@crosssteel.com">info@crosssteel.com</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><span>Magnolia, TX 77354</span></li>
+                        <li class="footer-hours"><i class="fa-solid fa-clock"></i>
+                            <span>Mon–Fri: 7am – 6pm<br>Sat: 8am – 4pm<br><strong style="color:var(--color-accent)">24/7
+                                    Emergency Line</strong></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 CrossSteel Welding. All Rights Reserved. | Magnolia, TX</p>
+                <p class="footer-legal">Mobile Welding &bull; Custom Fabrication &bull; Greater Houston, TX</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="tel:3462367549" class="mobile-sticky-call"><i class="fa-solid fa-phone"></i> Call Now</a>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
