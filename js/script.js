@@ -189,11 +189,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ================================================
-       FORM SUBMISSION
+       FORM SUBMISSION — GoHighLevel Webhook
        ================================================ */
+    const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/pit-3ed7afe3-0612-4c5b-ae11-d59d48b3d97e';
+
     const quoteForm = document.getElementById('quoteForm');
     if (quoteForm) {
-        quoteForm.addEventListener('submit', (e) => {
+        quoteForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = quoteForm.querySelector('button[type="submit"]');
             const originalHTML = btn.innerHTML;
@@ -202,8 +204,37 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true;
             btn.style.opacity = '0.7';
 
-            setTimeout(() => {
-                // Replace form with confirmation message
+            // Collect field values (works with or without IDs)
+            const nameRaw  = (document.getElementById('ghl-name')  || quoteForm.querySelector('input[type="text"]'))?.value  || '';
+            const phone    = (document.getElementById('ghl-phone') || quoteForm.querySelector('input[type="tel"]'))?.value   || '';
+            const email    = (document.getElementById('ghl-email') || quoteForm.querySelector('input[type="email"]'))?.value || '';
+            const service  = (document.getElementById('ghl-service') || quoteForm.querySelector('select'))?.value           || '';
+            const location = document.getElementById('ghl-location')?.value || '';
+            const message  = (document.getElementById('ghl-message') || quoteForm.querySelector('textarea'))?.value         || '';
+
+            // Split name into first / last
+            const nameParts  = nameRaw.trim().split(/\s+/);
+            const firstName  = nameParts[0] || 'Unknown';
+            const lastName   = nameParts.slice(1).join(' ') || '';
+
+            const payload = {
+                firstName,
+                lastName,
+                phone,
+                email,
+                message: `Service: ${service}\nLocation: ${location}\n\n${message}`,
+                source:  'CrossSteel Website — Quote Form',
+                tags:    ['website-lead', 'quote-request']
+            };
+
+            try {
+                await fetch(GHL_WEBHOOK, {
+                    method:  'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body:    JSON.stringify(payload)
+                });
+
+                // Success
                 quoteForm.innerHTML = `
                     <div style="text-align:center;padding:50px 20px;">
                         <div style="font-size:3rem;color:#ff4500;margin-bottom:16px">
@@ -216,7 +247,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         </p>
                     </div>
                 `;
-            }, 1400);
+            } catch (err) {
+                // Re-enable form if network error
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                alert('Something went wrong. Please call us at (346) 236-7549 or try again.');
+            }
         });
     }
 
