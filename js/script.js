@@ -189,9 +189,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ================================================
-       FORM SUBMISSION — GoHighLevel Webhook
+       FORM SUBMISSION — GoHighLevel API
        ================================================ */
-    const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/pit-3ed7afe3-0612-4c5b-ae11-d59d48b3d97e';
+    // Local proxy keeps API key server-side (run ghl-proxy.rb).
+    // Falls back to direct GHL API if proxy is not running.
+    const GHL_PROXY  = 'http://localhost:3001/submit';
+    const GHL_DIRECT = 'https://services.leadconnectorhq.com/contacts/';
+    const GHL_KEY    = 'pit-d5ea78dd-c453-4f66-b6c4-8752d7c85209';
+    const GHL_LOC    = 'FcshxsHOdsWHnfFGMvft';
 
     const quoteForm = document.getElementById('quoteForm');
     if (quoteForm) {
@@ -204,37 +209,54 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true;
             btn.style.opacity = '0.7';
 
-            // Collect field values (works with or without IDs)
-            const nameRaw  = (document.getElementById('ghl-name')  || quoteForm.querySelector('input[type="text"]'))?.value  || '';
-            const phone    = (document.getElementById('ghl-phone') || quoteForm.querySelector('input[type="tel"]'))?.value   || '';
-            const email    = (document.getElementById('ghl-email') || quoteForm.querySelector('input[type="email"]'))?.value || '';
-            const service  = (document.getElementById('ghl-service') || quoteForm.querySelector('select'))?.value           || '';
+            // Collect field values
+            const nameRaw  = document.getElementById('ghl-name')?.value  || quoteForm.querySelector('input[type="text"]')?.value  || '';
+            const phone    = document.getElementById('ghl-phone')?.value  || quoteForm.querySelector('input[type="tel"]')?.value   || '';
+            const email    = document.getElementById('ghl-email')?.value  || quoteForm.querySelector('input[type="email"]')?.value || '';
+            const service  = document.getElementById('ghl-service')?.value || quoteForm.querySelector('select')?.value             || '';
             const location = document.getElementById('ghl-location')?.value || '';
-            const message  = (document.getElementById('ghl-message') || quoteForm.querySelector('textarea'))?.value         || '';
+            const message  = document.getElementById('ghl-message')?.value || quoteForm.querySelector('textarea')?.value           || '';
 
-            // Split name into first / last
-            const nameParts  = nameRaw.trim().split(/\s+/);
-            const firstName  = nameParts[0] || 'Unknown';
-            const lastName   = nameParts.slice(1).join(' ') || '';
+            const nameParts = nameRaw.trim().split(/\s+/);
+            const firstName = nameParts[0] || 'Unknown';
+            const lastName  = nameParts.slice(1).join(' ') || '';
 
-            const payload = {
-                firstName,
-                lastName,
-                phone,
-                email,
-                message: `Service: ${service}\nLocation: ${location}\n\n${message}`,
-                source:  'CrossSteel Website — Quote Form',
-                tags:    ['website-lead', 'quote-request']
+            const proxyPayload = {
+                firstName: nameRaw,
+                phone, email,
+                message: `Service: ${service}\nLocation: ${location}\n\n${message}`
+            };
+
+            const ghlPayload = {
+                locationId: GHL_LOC,
+                firstName, lastName, phone, email,
+                source: 'CrossSteel Website — Quote Form',
+                tags:   ['website-lead', 'quote-request'],
+                notes:  `Service: ${service}\nLocation: ${location}\n\n${message}`
             };
 
             try {
-                await fetch(GHL_WEBHOOK, {
-                    method:  'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body:    JSON.stringify(payload)
-                });
+                let res;
+                try {
+                    // Try proxy first (keeps API key server-side)
+                    res = await fetch(GHL_PROXY, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(proxyPayload)
+                    });
+                } catch (_) {
+                    // Fallback: direct GHL API
+                    res = await fetch(GHL_DIRECT, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${GHL_KEY}`,
+                            'Version': '2021-07-28'
+                        },
+                        body: JSON.stringify(ghlPayload)
+                    });
+                }
 
-                // Success
                 quoteForm.innerHTML = `
                     <div style="text-align:center;padding:50px 20px;">
                         <div style="font-size:3rem;color:#ff4500;margin-bottom:16px">
@@ -248,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             } catch (err) {
-                // Re-enable form if network error
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
                 btn.style.opacity = '1';
@@ -256,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
 
 
     /* ================================================
