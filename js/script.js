@@ -149,44 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    /* ================================================
-       MAP — LEAFLET
-       ================================================ */
-    if (document.getElementById('map')) {
-        const magnoliaLat = 30.2085;
-        const magnoliaLng = -95.7508;
-
-        const map = L.map('map').setView([magnoliaLat, magnoliaLng], 9);
-
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 19
-        }).addTo(map);
-
-        // 50-mile service radius
-        L.circle([magnoliaLat, magnoliaLng], {
-            color: '#ff4500',
-            fillColor: '#ff4500',
-            fillOpacity: 0.08,
-            radius: 80467,
-            weight: 1.5
-        }).addTo(map);
-
-        // Custom icon
-        const csIcon = L.divIcon({
-            html: `<div style="background:#ff4500;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 12px rgba(255,69,0,0.7)"></div>`,
-            iconSize: [16, 16],
-            iconAnchor: [8, 8],
-            className: ''
-        });
-
-        L.marker([magnoliaLat, magnoliaLng], { icon: csIcon })
-            .addTo(map)
-            .bindPopup('<b style="color:#ff4500">CrossSteel Welding</b><br>Magnolia, TX — Mobile Welding')
-            .openPopup();
-    }
-
+/* Map code removed - using Google Maps iframe embed instead */
 
     /* ================================================
        FORM SUBMISSION — GoHighLevel API
