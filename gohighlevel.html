@@ -31,10 +31,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-
     <!-- Custom CSS -->
     <style>
 :root {
@@ -1418,7 +1414,22 @@ img {
     inset: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     pointer-events: none;
+    z-index: 1; /* Above image, below overlay */
+}
+
+.bento-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: 0;
+    transition: transform 0.5s ease;
+}
+
+.bento-item:hover .bento-img {
+    transform: scale(1.05);
 }
 
 .bento-overlay {
@@ -3056,9 +3067,9 @@ a.contact-info-val:hover {
             <div class="hero-trust-badges">
                 <span><i class="fa-solid fa-shield-halved"></i> Licensed &amp; Insured</span>
                 <span class="badge-divider">|</span>
-                <span><i class="fa-solid fa-clock"></i> Last-Minute / Emergency Service</span>
+                <span><i class="fa-solid fa-truck"></i> Mobile Service Available</span>
                 <span class="badge-divider">|</span>
-                <span><i class="fa-solid fa-star"></i> 5.0 Google Rated</span>
+                <span><i class="fa-solid fa-star"></i> Quality Craftsmanship Guaranteed</span>
             </div>
         </div>
 
@@ -3114,25 +3125,13 @@ a.contact-info-val:hover {
         <!-- Service list rows -->
         <div class="svc-list">
 
-            <a href="#quote" class="svc-row" aria-label="Trailer Repair - Get a Quote">
-                <span class="svc-num" aria-hidden="true">01</span>
-                <div class="svc-row-body">
-                    <span class="svc-tag">Top Service</span>
-                    <h3 class="svc-name">Trailer Repair &amp; Modification</h3>
-                    <p class="svc-desc">Custom ramps, fender repairs, tail widening, and cracked frames. Exactly what you need, delivered as promised.</p>
-                </div>
-                <div class="svc-row-right">
-                    <i class="fa-solid fa-trailer svc-icon-lg" aria-hidden="true"></i>
-                    <span class="svc-cta">Get a Quote <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-            </a>
-
             <a href="#quote" class="svc-row" aria-label="Mobile Welding - Get a Quote">
-                <span class="svc-num" aria-hidden="true">02</span>
+                <span class="svc-num" aria-hidden="true">01</span>
                 <div class="svc-row-body">
                     <span class="svc-tag">On-Site</span>
                     <h3 class="svc-name">Mobile Welding</h3>
-                    <p class="svc-desc">We roll up to your location fully equipped. Short notice? No problem. We handle last-minute jobs fast.</p>
+                    <p class="svc-desc">We roll up to your location fully equipped — farm, job site, ranch, or driveway.
+                        No hauling, no hassle.</p>
                 </div>
                 <div class="svc-row-right">
                     <i class="fa-solid fa-fire-burner svc-icon-lg" aria-hidden="true"></i>
@@ -3141,11 +3140,11 @@ a.contact-info-val:hover {
             </a>
 
             <a href="#quote" class="svc-row" aria-label="Custom Fabrication - Get a Quote">
-                <span class="svc-num" aria-hidden="true">03</span>
+                <span class="svc-num" aria-hidden="true">02</span>
                 <div class="svc-row-body">
                     <span class="svc-tag">Custom Build</span>
-                    <h3 class="svc-name">Custom Fab &amp; AC Cages</h3>
-                    <p class="svc-desc">Protective AC condenser cages, heavy-duty brackets, one-offs, and custom enclosures built from raw steel.</p>
+                    <h3 class="svc-name">Custom Metal Fabrication</h3>
+                    <p class="svc-desc">Security enclosures (AC cages), railings, frames, brackets — built to your exact spec from raw steel. One-offs welcome.</p>
                 </div>
                 <div class="svc-row-right">
                     <i class="fa-solid fa-hammer svc-icon-lg" aria-hidden="true"></i>
@@ -3154,11 +3153,12 @@ a.contact-info-val:hover {
             </a>
 
             <a href="#quote" class="svc-row" aria-label="Gates & Fencing - Get a Quote">
-                <span class="svc-num" aria-hidden="true">04</span>
+                <span class="svc-num" aria-hidden="true">03</span>
                 <div class="svc-row-body">
                     <span class="svc-tag">Residential &amp; Commercial</span>
                     <h3 class="svc-name">Gates &amp; Fencing</h3>
-                    <p class="svc-desc">Driveway gates, security fencing, decorative ironwork. Built heavy, looks sharp, lasts decades.</p>
+                    <p class="svc-desc">Driveway gates, security fencing, decorative ironwork. Built heavy, looks sharp,
+                        lasts decades.</p>
                 </div>
                 <div class="svc-row-right">
                     <i class="fa-solid fa-dungeon svc-icon-lg" aria-hidden="true"></i>
@@ -3166,15 +3166,28 @@ a.contact-info-val:hover {
                 </div>
             </a>
 
-            <a href="#quote" class="svc-row" aria-label="Equipment & Agricultural - Get a Quote">
-                <span class="svc-num" aria-hidden="true">05</span>
+            <a href="#quote" class="svc-row" aria-label="Trailer Repair - Get a Quote">
+                <span class="svc-num" aria-hidden="true">04</span>
                 <div class="svc-row-body">
-                    <span class="svc-tag">Farm &amp; Residential</span>
-                    <h3 class="svc-name">Equipment &amp; Agricultural Repair</h3>
-                    <p class="svc-desc">From garden tillers to large livestock pens. Work done professionally and at a reasonable price.</p>
+                    <span class="svc-tag">Repair &amp; Fab</span>
+                    <h3 class="svc-name">Trailer Repair &amp; Modification</h3>
+                    <p class="svc-desc">Custom ramps, tail widening, fender repairs, bad hitches, and cracked frames. We fix it on-site or build what you need.</p>
                 </div>
                 <div class="svc-row-right">
-                    <i class="fa-solid fa-tractor svc-icon-lg" aria-hidden="true"></i>
+                    <i class="fa-solid fa-trailer svc-icon-lg" aria-hidden="true"></i>
+                    <span class="svc-cta">Get a Quote <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="#quote" class="svc-row" aria-label="Ranch & Agricultural Welding - Get a Quote">
+                <span class="svc-num" aria-hidden="true">05</span>
+                <div class="svc-row-body">
+                    <span class="svc-tag">Farm &amp; Ranch</span>
+                    <h3 class="svc-name">Ranch &amp; Agricultural Equipment</h3>
+                    <p class="svc-desc">Small engine equipment (garden tillers), livestock pens, feeders, and barn structures. We know ranches — we come to yours.</p>
+                </div>
+                <div class="svc-row-right">
+                    <i class="fa-solid fa-cow svc-icon-lg" aria-hidden="true"></i>
                     <span class="svc-cta">Get a Quote <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -3288,20 +3301,23 @@ a.contact-info-val:hover {
                 <h2 class="about-title">We Don't Do<br><em class="about-accent">Cheap Work.</em></h2>
                 <blockquote class="about-quote">
                     "Do it right the first time, or don't do it at all."
+                    <span style="display:block; font-size:0.65em; color:var(--color-accent); font-style:normal; margin-top:15px; font-weight:700; letter-spacing:1px;">&mdash; EDGAR, OWNER &amp; LEAD WELDER</span>
                 </blockquote>
-                <p class="about-body">CrossSteel Welding was built on one principle: Do it right the first time. Founded by Edgar, we're a Magnolia-based, mobile-first team serving Houston and surrounding communities. From small repair jobs to large custom fabrications — every weld gets the same care.</p>
-                <p class="about-body">We know you're hiring a craftsman, not a corporation. Edgar and the team don't cut corners. We don't do cheap work. And that's exactly why our clients keep coming back.</p>
+                <p class="about-body">CrossSteel Welding was built on one principle. Based in Magnolia, TX, we're a
+                    mobile-first team serving Houston and surrounding communities. Led by Edgar, we bring decades of hands-on experience directly to your location. From small repair jobs to large
+                    custom fabrications — every weld gets the same care.</p>
+                <p class="about-body">We know you're hiring a person, not just a company. We don't cut corners. We don't do cheap work. And that's exactly why our clients keep coming back.</p>
                 <div class="about-stats-row">
                     <div class="about-stat reveal-item">
-                        <span class="counter" data-target="10">0</span><span class="stat-plus">+</span>
+                        <span class="counter" data-target="10">10</span><span class="stat-plus">+</span>
                         <span class="astat-label">Years Experience</span>
                     </div>
                     <div class="about-stat reveal-item">
-                        <span class="counter" data-target="500">0</span><span class="stat-plus">+</span>
+                        <span class="counter" data-target="500">500</span><span class="stat-plus">+</span>
                         <span class="astat-label">Projects Completed</span>
                     </div>
                     <div class="about-stat reveal-item">
-                        <span class="counter" data-target="50">0</span><span class="stat-plus">mi</span>
+                        <span class="counter" data-target="50">50</span><span class="stat-plus">mi</span>
                         <span class="astat-label">Service Radius</span>
                     </div>
                     <div class="about-stat reveal-item">
@@ -3332,6 +3348,8 @@ a.contact-info-val:hover {
             </div>
             <div class="bento-grid">
                 <div class="bento-item bento-lg bento-fire reveal-item">
+                    <!-- Placeholder Image: Replace src with actual photo -->
+                    <img src="https://placehold.co/800x600/1a1a1a/ff4500?text=Project+Photo" alt="Mobile Welding Repair" class="bento-img" loading="lazy">
                     <div class="bento-overlay">
                         <span class="bento-tag">Mobile Welding</span>
                         <h3>On-Site Structural Repair</h3>
@@ -3339,6 +3357,8 @@ a.contact-info-val:hover {
                     </div>
                 </div>
                 <div class="bento-item bento-gate reveal-item">
+                    <!-- Placeholder Image: Replace src with actual photo -->
+                    <img src="https://placehold.co/400x400/111111/ff4500?text=Project+Photo" alt="Entrance Gate" class="bento-img" loading="lazy">
                     <div class="bento-overlay">
                         <span class="bento-tag">Custom Fab</span>
                         <h3>Ranch Entrance Gate</h3>
@@ -3346,13 +3366,17 @@ a.contact-info-val:hover {
                     </div>
                 </div>
                 <div class="bento-item bento-trailer reveal-item">
+                    <!-- Placeholder Image: Replace src with actual photo -->
+                    <img src="https://placehold.co/400x400/222222/ff4500?text=Project+Photo" alt="Trailer Ramps" class="bento-img" loading="lazy">
                     <div class="bento-overlay">
-                        <span class="bento-tag">Repair</span>
-                        <h3>Trailer Frame Rebuild</h3>
-                        <p>Full frame restoration &amp; hitch fab</p>
+                        <span class="bento-tag">Modification</span>
+                        <h3>Custom MC Trailer Ramps</h3>
+                        <p>Tail widening &amp; ramp fabrication</p>
                     </div>
                 </div>
                 <div class="bento-item bento-fence reveal-item">
+                    <!-- Placeholder Image: Replace src with actual photo -->
+                    <img src="https://placehold.co/400x400/1a1a1a/ff4500?text=Project+Photo" alt="Security Fence" class="bento-img" loading="lazy">
                     <div class="bento-overlay">
                         <span class="bento-tag">Fencing</span>
                         <h3>Commercial Security Fence</h3>
@@ -3360,6 +3384,8 @@ a.contact-info-val:hover {
                     </div>
                 </div>
                 <div class="bento-item bento-struct reveal-item">
+                    <!-- Placeholder Image: Replace src with actual photo -->
+                    <img src="https://placehold.co/400x400/0a0a0a/ff4500?text=Project+Photo" alt="Steel Column" class="bento-img" loading="lazy">
                     <div class="bento-overlay">
                         <span class="bento-tag">Structural</span>
                         <h3>Steel Column Install</h3>
@@ -3367,6 +3393,8 @@ a.contact-info-val:hover {
                     </div>
                 </div>
                 <div class="bento-item bento-ranch reveal-item">
+                    <!-- Placeholder Image: Replace src with actual photo -->
+                    <img src="https://placehold.co/400x400/151515/ff4500?text=Project+Photo" alt="Livestock Pen" class="bento-img" loading="lazy">
                     <div class="bento-overlay">
                         <span class="bento-tag">Agricultural</span>
                         <h3>Livestock Pen System</h3>
@@ -3386,11 +3414,16 @@ a.contact-info-val:hover {
             <div class="reviews-header reveal-item">
                 <p class="svc-label"><span></span> Client Reviews</p>
                 <h2 class="reviews-title">What People<br>Are Saying</h2>
-                <div class="google-rating-bar">
-                    <div class="g-stars">★★★★★</div>
-                    <strong>5.0 Stars</strong>
-                    <span>— 17 Google Reviews (All 5-Star)</span>
-                    <i class="fa-brands fa-google g-icon"></i>
+                <div>
+                    <a href="https://www.google.com/maps/place/CrossSteel+Welding" target="_blank" rel="noopener noreferrer" class="google-rating-bar" style="text-decoration:none;">
+                        <div class="g-stars">★★★★★</div>
+                        <strong>5.0 Stars</strong>
+                        <span>(17 Google Reviews &mdash; All 5-Star)</span>
+                        <i class="fa-brands fa-google g-icon"></i>
+                    </a>
+                    <a href="https://www.google.com/maps/place/CrossSteel+Welding" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top: 15px; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fa-brands fa-google"></i> See Our Google Reviews
+                    </a>
                 </div>
             </div>
             <div class="testimonials-grid">
@@ -3444,11 +3477,14 @@ a.contact-info-val:hover {
             <div class="map-header reveal-item">
                 <p class="svc-label"><span></span> Service Area</p>
                 <h2 class="map-title">We Come to You</h2>
-                <p class="map-sub">Based in Magnolia, TX — serving a <strong>50+ mile radius</strong> across Greater
+                <p class="map-sub"><strong>30319 Turriff Cir, Magnolia, TX 77354</strong><br>Serving a <strong>50+ mile radius</strong> across Greater
                     Houston.</p>
             </div>
             <div class="map-wrap reveal-item">
-                <div id="map" class="map-container"></div>
+                <div class="map-container" style="background:var(--color-bg-light);">
+                    <!-- Google Maps Embed: Centered on Magnolia TX area -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440539.3175317789!2d-95.96263507872658!3d30.291703217431693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86472f49221f6c1d%3A0x8e98e95ab386ff16!2sCrossSteel%20Welding!5e0!3m2!1sen!2sus!4v1711200000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="map-cities-panel">
                     <h4>Cities We Serve</h4>
                     <div class="city-chips">
@@ -3474,9 +3510,10 @@ a.contact-info-val:hover {
                 <p class="quote-panel-sub">We respond within a few hours. No junk fees, no pressure — just an honest
                     price for honest work.</p>
                 <div class="quote-trust-list">
+                    <div class="qtrust-item"><i class="fa-solid fa-circle-check"></i><span>Fair, upfront pricing &mdash; no surprises</span></div>
                     <div class="qtrust-item"><i class="fa-solid fa-circle-check"></i><span>Free estimates, no
                             obligation</span></div>
-                    <div class="qtrust-item"><i class="fa-solid fa-circle-check"></i><span>Same-day response on most
+                    <div class="qtrust-item"><i class="fa-solid fa-circle-check"></i><span>Same-week response on most
                             requests</span></div>
                     <div class="qtrust-item"><i class="fa-solid fa-circle-check"></i><span>Licensed &amp; insured</span>
                     </div>
@@ -3486,8 +3523,9 @@ a.contact-info-val:hover {
                             availability</span></div>
                 </div>
                 <div class="quote-direct-call">
-                    <span>Prefer to call?</span>
+                    <span>Prefer to text or call?</span>
                     <a href="tel:3462367549" class="qcall-link"><i class="fa-solid fa-phone"></i> (346) 236-7549</a>
+                    <p style="margin-top:10px; font-size:0.95rem; color:var(--color-text-muted);">Send us a text message for a faster response.</p>
                 </div>
             </div>
             <!-- Right: Form -->
@@ -3657,8 +3695,9 @@ a.contact-info-val:hover {
                         <li class="footer-hours"><i class="fa-solid fa-clock"></i>
                             <span>
                                 Mon–Wed: 7am – 6:30pm<br>
-                                Thu–Sat: 7am – 5pm | Sun: Closed<br>
-                                <strong style="color:var(--color-accent)">Last-Minute / Emergency Service Available</strong>
+                                Thu–Sat: 7am – 5pm<br>
+                                Sun: Closed<br>
+                                <strong style="color:var(--color-accent); display:block; margin-top:5px;">24/7 Emergency Line</strong>
                             </span>
                         </li>
                     </ul>
@@ -3678,9 +3717,6 @@ a.contact-info-val:hover {
         <i class="fa-solid fa-phone"></i> Call Now
     </a>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -3833,44 +3869,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    /* ================================================
-       MAP — LEAFLET
-       ================================================ */
-    if (document.getElementById('map')) {
-        const magnoliaLat = 30.2085;
-        const magnoliaLng = -95.7508;
-
-        const map = L.map('map').setView([magnoliaLat, magnoliaLng], 9);
-
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 19
-        }).addTo(map);
-
-        // 50-mile service radius
-        L.circle([magnoliaLat, magnoliaLng], {
-            color: '#ff4500',
-            fillColor: '#ff4500',
-            fillOpacity: 0.08,
-            radius: 80467,
-            weight: 1.5
-        }).addTo(map);
-
-        // Custom icon
-        const csIcon = L.divIcon({
-            html: `<div style="background:#ff4500;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 12px rgba(255,69,0,0.7)"></div>`,
-            iconSize: [16, 16],
-            iconAnchor: [8, 8],
-            className: ''
-        });
-
-        L.marker([magnoliaLat, magnoliaLng], { icon: csIcon })
-            .addTo(map)
-            .bindPopup('<b style="color:#ff4500">CrossSteel Welding</b><br>Magnolia, TX — Mobile Welding')
-            .openPopup();
-    }
-
+/* Map code removed - using Google Maps iframe embed instead */
 
     /* ================================================
        FORM SUBMISSION — GoHighLevel API
