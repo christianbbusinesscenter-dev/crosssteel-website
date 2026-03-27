@@ -418,7 +418,7 @@ img {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('../assets/images/hero-bg.jpg');
+    background-image: url('../assets/images/Herosection.jpg');
     background-size: cover;
     background-position: center 30%;
     background-color: #1a1a1a;
@@ -1182,7 +1182,7 @@ img {
 
 .about-image-panel {
     position: relative;
-    background: url('../assets/images/hero-bg.jpg') center/cover no-repeat;
+    background: url('../assets/images/Herosection.jpg') center/cover no-repeat;
     background-color: #1a1a1a;
     overflow: hidden;
 }
@@ -2366,7 +2366,7 @@ form select {
     content: '';
     position: absolute;
     inset: 0;
-    background: url('assets/images/hero-bg.jpg') center/cover no-repeat;
+    background: url('assets/images/Herosection.jpg') center/cover no-repeat;
     opacity: 0.07;
 }
 
@@ -2952,6 +2952,55 @@ a.contact-info-val:hover {
         text-align: center;
     }
 }
+/* Service Card Thumbnails */
+.svc-thumbs {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+.svc-thumb-link {
+    display: block;
+    width: 90px;
+    height: 60px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255,140,0,0.15);
+}
+.svc-thumb-link:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 16px rgba(255,140,0,0.35);
+}
+.svc-thumb-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.svc-related-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.3s, gap 0.3s;
+}
+.svc-related-link:hover {
+    color: #fff;
+    gap: 8px;
+}
+@media (max-width: 768px) {
+    .svc-thumb-link {
+        width: 70px;
+        height: 48px;
+    }
+}
+
 </style>
 
     <!-- Schema Markup -->
@@ -3136,7 +3185,11 @@ a.contact-info-val:hover {
                     <p class="svc-desc">We roll up to your location fully equipped — farm, job site, ranch, or driveway. No hauling, no hassle.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="#quote" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Get a Quote</a>
-                        <a href="#gallery" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;"><i class="fa-solid fa-image"></i> View Past Work</a>
+                        <div class="svc-thumbs">
+                        <a href="gallery.html?filter=structural" class="svc-thumb-link"><img src="assets/images/IMG_3685-web.jpg" alt="Mobile Welding example" loading="lazy"></a>
+                        <a href="gallery.html?filter=structural" class="svc-thumb-link"><img src="assets/images/IMG_3678-web.jpg" alt="Mobile Welding example" loading="lazy"></a>
+                    </div>
+                    <a href="gallery.html?filter=structural" class="svc-related-link">See Related Work <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="svc-row-right hidden-mobile" style="opacity:0.3;">
@@ -3152,11 +3205,11 @@ a.contact-info-val:hover {
                     <p class="svc-desc">Security enclosures (AC cages), railings, frames, brackets — built to your exact spec from raw steel. One-offs welcome.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="#quote" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Get a Quote</a>
-                        <a href="#gallery" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;"><i class="fa-solid fa-image"></i> View Past Work</a>
-                        <div style="display:flex; gap:5px; margin-left:10px;">
-                            <img src="assets/images/IMG_3678-web.jpg" style="height:40px; width:70px; object-fit:cover; border-radius:4px; opacity:0.8; filter:grayscale(1);">
-                            <img src="assets/images/IMG_3684-web.jpg" style="height:40px; width:70px; object-fit:cover; border-radius:4px; opacity:0.8; filter:grayscale(1);">
-                        </div>
+                        <div class="svc-thumbs">
+                        <a href="gallery.html?filter=fabrication" class="svc-thumb-link"><img src="assets/images/IMG_3684-web.jpg" alt="Custom Metal Fabrication example" loading="lazy"></a>
+                        <a href="gallery.html?filter=fabrication" class="svc-thumb-link"><img src="assets/images/IMG_3734-web.jpg" alt="Custom Metal Fabrication example" loading="lazy"></a>
+                    </div>
+                    <a href="gallery.html?filter=fabrication" class="svc-related-link">See Related Work <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="svc-row-right hidden-mobile" style="opacity:0.3;">
@@ -3172,7 +3225,11 @@ a.contact-info-val:hover {
                     <p class="svc-desc">Driveway gates, security fencing, decorative ironwork. Built heavy, looks sharp, lasts decades.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="#quote" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Get a Quote</a>
-                        <a href="#gallery" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;"><i class="fa-solid fa-image"></i> View Past Work</a>
+                        <div class="svc-thumbs">
+                        <a href="gallery.html?filter=fabrication" class="svc-thumb-link"><img src="assets/images/IMG_3688-web.jpg" alt="Gates &amp; Fencing example" loading="lazy"></a>
+                        <a href="gallery.html?filter=fabrication" class="svc-thumb-link"><img src="assets/images/IMG_4278-web.jpg" alt="Gates &amp; Fencing example" loading="lazy"></a>
+                    </div>
+                    <a href="gallery.html?filter=fabrication" class="svc-related-link">See Related Work <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="svc-row-right hidden-mobile" style="opacity:0.3;">
@@ -3188,7 +3245,11 @@ a.contact-info-val:hover {
                     <p class="svc-desc">Custom ramps, tail widening, fender repairs, bad hitches, and cracked frames. We fix it on-site or build what you need.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="#quote" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Get a Quote</a>
-                        <a href="#gallery" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;"><i class="fa-solid fa-image"></i> View Past Work</a>
+                        <div class="svc-thumbs">
+                        <a href="gallery.html?filter=trailers" class="svc-thumb-link"><img src="assets/images/IMG_3689-web.jpg" alt="Trailer Repair &amp; Modification example" loading="lazy"></a>
+                        <a href="gallery.html?filter=trailers" class="svc-thumb-link"><img src="assets/images/IMG_4181-web.jpg" alt="Trailer Repair &amp; Modification example" loading="lazy"></a>
+                    </div>
+                    <a href="gallery.html?filter=trailers" class="svc-related-link">See Related Work <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="svc-row-right hidden-mobile" style="opacity:0.3;">
@@ -3204,7 +3265,11 @@ a.contact-info-val:hover {
                     <p class="svc-desc">Small engine equipment (garden tillers), livestock pens, feeders, and barn structures. We know ranches — we come to yours.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="#quote" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Get a Quote</a>
-                        <a href="#gallery" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;"><i class="fa-solid fa-image"></i> View Past Work</a>
+                        <div class="svc-thumbs">
+                        <a href="gallery.html?filter=all" class="svc-thumb-link"><img src="assets/images/IMG_4181-web.jpg" alt="Ranch &amp; Agricultural example" loading="lazy"></a>
+                        <a href="gallery.html?filter=all" class="svc-thumb-link"><img src="assets/images/IMG_4186-web.jpg" alt="Ranch &amp; Agricultural example" loading="lazy"></a>
+                    </div>
+                    <a href="gallery.html?filter=all" class="svc-related-link">See Related Work <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="svc-row-right hidden-mobile" style="opacity:0.3;">
@@ -3220,7 +3285,11 @@ a.contact-info-val:hover {
                     <p class="svc-desc">Beams, columns, connection plates, and supports. Engineered to hold. Built to code.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="#quote" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Get a Quote</a>
-                        <a href="#gallery" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;"><i class="fa-solid fa-image"></i> View Past Work</a>
+                        <div class="svc-thumbs">
+                        <a href="gallery.html?filter=structural" class="svc-thumb-link"><img src="assets/images/IMG_3746-web.jpg" alt="Structural Steel example" loading="lazy"></a>
+                        <a href="gallery.html?filter=structural" class="svc-thumb-link"><img src="assets/images/IMG_4186-web.jpg" alt="Structural Steel example" loading="lazy"></a>
+                    </div>
+                    <a href="gallery.html?filter=structural" class="svc-related-link">See Related Work <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="svc-row-right hidden-mobile" style="opacity:0.3;">
@@ -3236,7 +3305,11 @@ a.contact-info-val:hover {
                     <p class="svc-desc">Cracked welds, rusted joints, failed connections. We assess, fix, and reinforce — cheaper than replacement.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="#quote" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Get a Quote</a>
-                        <a href="#gallery" class="btn btn-outline" style="padding: 8px 15px; font-size: 0.85rem;"><i class="fa-solid fa-image"></i> View Past Work</a>
+                        <div class="svc-thumbs">
+                        <a href="gallery.html?filter=all" class="svc-thumb-link"><img src="assets/images/IMG_4279-web.jpg" alt="Steel Repair &amp; Restoration example" loading="lazy"></a>
+                        <a href="gallery.html?filter=all" class="svc-thumb-link"><img src="assets/images/IMG_3685-web.jpg" alt="Steel Repair &amp; Restoration example" loading="lazy"></a>
+                    </div>
+                    <a href="gallery.html?filter=all" class="svc-related-link">See Related Work <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="svc-row-right hidden-mobile" style="opacity:0.3;">
@@ -3252,6 +3325,10 @@ a.contact-info-val:hover {
                     <p class="svc-desc">Equipment down? Structure failing? Can't wait? Call us. We move fast when it matters.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="tel:3462367549" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fa-solid fa-phone"></i> Call Emergency Line</a>
+                        <div class="svc-thumbs">
+                        <a href="gallery.html?filter=all" class="svc-thumb-link"><img src="assets/images/IMG_3685-web.jpg" alt="Emergency Welding example" loading="lazy"></a>
+                    </div>
+                    <a href="gallery.html?filter=all" class="svc-related-link">See Related Work <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="svc-row-right hidden-mobile" style="opacity:0.3;">
@@ -4011,6 +4088,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+
+    // Auto-activate filter from URL param (e.g. ?filter=structural)
+    const urlParams = new URLSearchParams(window.location.search);
+    const autoFilter = urlParams.get('filter');
+    if (autoFilter && filterBtns.length > 0) {
+        const targetBtn = document.querySelector(`.filter-btn[data-filter="${autoFilter}"]`);
+        if (targetBtn) {
+            targetBtn.click();
+        }
+    }
+
     }
 
 });
