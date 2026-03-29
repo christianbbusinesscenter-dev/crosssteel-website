@@ -3001,6 +3001,27 @@ a.contact-info-val:hover {
     }
 }
 
+/* Gallery Captions */
+.gallery-caption {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-align: center;
+    letter-spacing: 0.3px;
+    line-height: 1.4;
+}
+.gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(255,140,0,0.15);
+}
+
 </style>
 
     <!-- Schema Markup -->
@@ -3281,8 +3302,8 @@ a.contact-info-val:hover {
                 <span class="svc-num" aria-hidden="true">06</span>
                 <div class="svc-row-body">
                     <span class="svc-tag">Industrial</span>
-                    <h3 class="svc-name">Structural Steel</h3>
-                    <p class="svc-desc">Beams, columns, connection plates, and supports. Engineered to hold. Built to code.</p>
+                    <h3 class="svc-name">Heavy Equipment Repair &amp; Modifications</h3>
+                    <p class="svc-desc">Skid steers, excavators, loaders, and more. We repair and modify heavy equipment on-site so you stay productive.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="#quote" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Get a Quote</a>
                         <div class="svc-thumbs">
@@ -3301,8 +3322,8 @@ a.contact-info-val:hover {
                 <span class="svc-num" aria-hidden="true">07</span>
                 <div class="svc-row-body">
                     <span class="svc-tag">Repair</span>
-                    <h3 class="svc-name">Steel Repair &amp; Restoration</h3>
-                    <p class="svc-desc">Cracked welds, rusted joints, failed connections. We assess, fix, and reinforce — cheaper than replacement.</p>
+                    <h3 class="svc-name">Residential &amp; Commercial</h3>
+                    <p class="svc-desc">From backyard projects to commercial builds — we bring the same quality and precision to every job, regardless of scale.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="#quote" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Get a Quote</a>
                         <div class="svc-thumbs">
@@ -3320,9 +3341,9 @@ a.contact-info-val:hover {
             <div class="svc-row svc-row--emergency">
                 <span class="svc-num" aria-hidden="true">08</span>
                 <div class="svc-row-body">
-                    <span class="svc-tag svc-tag--hot">24 / 7 Emergency</span>
-                    <h3 class="svc-name">Emergency Welding</h3>
-                    <p class="svc-desc">Equipment down? Structure failing? Can't wait? Call us. We move fast when it matters.</p>
+                    <span class="svc-tag svc-tag--hot">24 / 7</span>
+                    <h3 class="svc-name">Custom Metal Building Erection</h3>
+                    <p class="svc-desc">Metal barns, carports, workshops, and commercial structures. Erected on-site from foundation to finish.</p>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                         <a href="tel:3462367549" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fa-solid fa-phone"></i> Call Emergency Line</a>
                         <div class="svc-thumbs">
@@ -3610,13 +3631,14 @@ a.contact-info-val:hover {
                         <select required>
                             <option value="" disabled selected>Select a service...</option>
                             <option>Mobile Welding</option>
-                            <option>Custom Metal Fabrication</option>
+                            <option>Custom Fabrication</option>
                             <option>Gates &amp; Fencing</option>
-                            <option>Trailer Repair / Fabrication</option>
+                            <option>Trailer Repair &amp; Modifications</option>
                             <option>Ranch &amp; Agricultural</option>
-                            <option>Structural Steel</option>
-                            <option>Steel Repair &amp; Restoration</option>
-                            <option>Emergency Welding</option>
+                            <option>Residential &amp; Commercial</option>
+                            <option>Heavy Equipment Repair &amp; Modifications</option>
+                            <option>Custom Metal Building Erection</option>
+                            <option>Emergency Services</option>
                             <option>Other</option>
                         </select>
                     </div>
@@ -3636,6 +3658,33 @@ a.contact-info-val:hover {
                         sell it.</p>
                 </form>
             </div>
+        </div>
+    
+    <!-- Gallery Preview Slideshow -->
+    <section class="section" style="padding: 60px 0; background: var(--color-bg-alt);">
+        <div class="container" style="text-align: center;">
+            <p class="svc-label" style="justify-content:center;"><span></span> Our Work Speaks for Itself</p>
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin-bottom: 30px;">Recent Projects</h2>
+            <div style="display: flex; gap: 12px; overflow-x: auto; padding-bottom: 15px; scroll-snap-type: x mandatory;">
+                <img src="assets/images/263095633_4924360704261627_7870245112151619728_n.jpg" alt="CrossSteel Project" loading="lazy" style="height: 220px; min-width: 300px; object-fit: cover; border-radius: 8px; scroll-snap-align: start; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                <img src="assets/images/277082788_3488756971248428_5897971853914464678_n.jpg" alt="CrossSteel Project" loading="lazy" style="height: 220px; min-width: 300px; object-fit: cover; border-radius: 8px; scroll-snap-align: start; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                <img src="assets/images/281789794_1269159500602832_5137203222317701505_n.jpg" alt="CrossSteel Project" loading="lazy" style="height: 220px; min-width: 300px; object-fit: cover; border-radius: 8px; scroll-snap-align: start; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                <img src="assets/images/503052988_18087404968726885_7279538995230790728_n.jpg" alt="CrossSteel Project" loading="lazy" style="height: 220px; min-width: 300px; object-fit: cover; border-radius: 8px; scroll-snap-align: start; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                <img src="assets/images/504015461_18087515716726885_3007153364224453093_n (1).jpg" alt="CrossSteel Project" loading="lazy" style="height: 220px; min-width: 300px; object-fit: cover; border-radius: 8px; scroll-snap-align: start; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                <img src="assets/images/504145612_18087321487726885_58330315112748026_n.jpg" alt="CrossSteel Project" loading="lazy" style="height: 220px; min-width: 300px; object-fit: cover; border-radius: 8px; scroll-snap-align: start; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                <img src="assets/images/504431932_18087973915726885_964496382638075040_n.jpg" alt="CrossSteel Project" loading="lazy" style="height: 220px; min-width: 300px; object-fit: cover; border-radius: 8px; scroll-snap-align: start; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                <img src="assets/images/509640440_18088999729726885_8466000891347834947_n.jpg" alt="CrossSteel Project" loading="lazy" style="height: 220px; min-width: 300px; object-fit: cover; border-radius: 8px; scroll-snap-align: start; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+            </div>
+            <a href="#gallery" class="btn btn-primary btn-lg" style="margin-top: 30px; display: inline-flex; align-items: center; gap: 8px;">View Full Project Gallery <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+
+    <!-- CTA Bridge to Gallery -->
+    <section style="padding: 40px 0; text-align: center; background: var(--color-bg);">
+        <div class="container">
+            <p style="font-size: 1.1rem; color: var(--color-text-muted); margin-bottom: 15px;">Want to see what we're capable of before you reach out?</p>
+            <a href="#gallery" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">Browse Our Past Work <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </section>
 
@@ -3728,10 +3777,10 @@ a.contact-info-val:hover {
                     <ul>
                         <li><a href="#services">Mobile Welding</a></li>
                         <li><a href="#services">Custom Fabrication</a></li>
-                        <li><a href="#services">Gates &amp; Fencing</a></li>
-                        <li><a href="#services">Trailer Repair</a></li>
-                        <li><a href="#services">Ranch &amp; Agricultural</a></li>
-                        <li><a href="#services">Emergency Welding</a></li>
+                        <li><a href="#services">Gates & Fencing</a></li>
+                        <li><a href="#services">Trailer Repair & Modifications</a></li>
+                        <li><a href="#services">Ranch & Agricultural</a></li>
+                        <li><a href="#services">Residential & Commercial</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -3751,12 +3800,10 @@ a.contact-info-val:hover {
                         <li><i class="fa-solid fa-phone"></i><a href="tel:3462367549">(346) 236-7549</a></li>
                         <li><i class="fa-solid fa-envelope"></i><a
                                 href="mailto:CrossSteelWelding@gmail.com">CrossSteelWelding@gmail.com</a></li>
-                        <li><i class="fa-solid fa-location-dot"></i><span>30319 Turriff Cir, Magnolia, TX 77354</span></li>
+                        <li><i class="fa-solid fa-location-dot"></i><span>Based in Magnolia, TX</span></li>
                         <li class="footer-hours"><i class="fa-solid fa-clock"></i>
                             <span>
-                                Mon–Wed: 7am – 6:30pm<br>
-                                Thu–Sat: 7am – 5pm<br>
-                                Sun: Closed<br>
+                                Mon–Sat: 7:00am – 6:30pm<br>
                                 <strong style="color:var(--color-accent); display:block; margin-top:5px;">24/7 Emergency Line</strong>
                             </span>
                         </li>
